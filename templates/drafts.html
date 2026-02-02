@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Drafts{% endblock %}
+
+{% block content %}
+<h2>Drafts</h2>
+
+{% if posts %}
+  {% for post in posts %}
+    <article class="post-card">
+      <h3>{{ post.title }}</h3>
+
+      <p class="meta">
+        {{ post.author }} —
+        {{ post.created_at.strftime('%d.%m.%Y %H:%M') }}
+        <span class="badge-draft">Draft</span>
+      </p>
+
+      <p>
+        {{ post.content[:150] }}
+        {% if post.content|length > 150 %}...{% endif %}
+      </p>
+
+      <a href="/drafts/{{ post.id }}" class="read-more" style="margin-bottom: 10px; display: inline-block;">more →</a>
+    </article>
+  {% endfor %}
+{% else %}
+  <p>No Drafts Found.</p>
+{% endif %}
+{% endblock %}

@@ -1,31 +1,97 @@
 {% extends "base.html" %}
 
-{% block title %}Editing{% endblock %}
+{% block title %}Edit post{% endblock %}
 
 {% block content %}
 <div class="edit-container">
-  <h2>Editing a post</h2>
+  <h2>Edit post</h2>
 
-  <form method="post" class="edit-form">
-    <label>
-      Sarlavha
-      <input type="text" name="title" value="{{ post.title }}" required>
-    </label>
+  <form
+    method="post"
+    action="/post/{{ post.id }}/edit"
+    class="edit-form"
+  >
 
-    <label>
-      Muallif
-      <input type="text" name="author" value="{{ post.author }}" required>
-    </label>
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input
+        type="text"
+        id="title"
+        name="title"
+        value="{{ post.title }}"
+        required
+      />
+    </div>
 
-    <label>
-      Matn
-      <textarea name="content" rows="10" required>{{ post.content }}</textarea>
-    </label>
+    <div class="form-group">
+      <label for="slug">URL</label>
+      <input
+        type="text"
+        id="slug"
+        name="slug"
+        value="{{ post.slug }}"
+        required
+      />
+      <small class="hint">
+        This will be used in the post URL
+      </small>
+    </div>
+
+    <div class="form-group">
+      <label for="author">Author</label>
+      <input
+        type="text"
+        id="author"
+        name="author"
+        value="{{ post.author }}"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="content">Content</label>
+      <textarea
+        id="content"
+        name="content"
+        rows="12"
+        required
+      >{{ post.content }}</textarea>
+    </div>
+
+    <p class="meta">
+      Status:
+      {% if post.is_published %}
+        <strong>Published</strong>
+        {% if post.published_at %}
+          · {{ post.published_at.strftime('%d.%m.%Y %H:%M') }}
+        {% endif %}
+      {% else %}
+        <strong>Draft</strong>
+      {% endif %}
+    </p>
 
     <div class="form-actions">
-      <button type="submit" class="btn-save">Save</button>
-      <a href="/post/{{ post.slug }}" class="btn-cancel">Cancel</a>
+      <button type="submit" class="btn-save">
+        Save changes
+      </button>
+
+      {% if not post.is_published %}
+      <form
+        method="post"
+        action="/post/{{ post.id }}/publish"
+        style="display:inline"
+      >
+        <button type="submit" class="btn-publish">
+          Publish
+        </button>
+      </form>
+      {% endif %}
+
+      <a href="/post/{{ post.slug }}" class="btn-cancel">
+        Cancel
+      </a>
     </div>
+
   </form>
 </div>
 {% endblock %}

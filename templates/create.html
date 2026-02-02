@@ -1,35 +1,44 @@
-{% extends "base.html" %} {% block title %}Yangi Post{% endblock %} {% block
+{% extends "base.html" %} {% block title %}New Post{% endblock %} {% block
 content %}
+
 <h2>Writing a new post</h2>
 
 <form method="POST" action="/create" class="post-form">
-    <div class="form-group">
-        <label for="title">Title:</label>
-        <input type="text" id="title" name="title" required />
-    </div>
+  <div class="form-group">
+    <label for="title">Title:</label>
+    <input type="text" id="title" name="title" required />
+  </div>
 
-    <div class="form-group">
-        <label for="author">Author:</label>
-        <input type="text" id="author" name="author" required />
-    </div>
+  <div class="form-group">
+    <label for="author">Author:</label>
+    <input type="text" id="author" name="author" required />
+  </div>
 
-    <div class="form-group">
-        <label for="content">Content:</label>
-        <textarea id="content" name="content" rows="10" required></textarea>
-    </div>
+  <div class="form-group">
+    <label for="content">Content:</label>
+    <textarea id="content" name="content" rows="10" required></textarea>
+  </div>
 
-    <div class="form-group">
-        <label for="slug">Url (optional)</label>
-        <input
-            type="text"
-            name="slug"
-            id="slug"
-            placeholder="for example: my-first-post"
-        />
-        <small class="hint"> if left empty, it will be auto-generated </small>
-    </div>
+  <div class="form-group">
+    <label for="slug">Url (optional)</label>
+    <input
+      type="text"
+      name="slug"
+      id="slug"
+      placeholder="for example: my-first-post"
+    />
+    <small class="hint"> if left empty, it will be auto-generated </small>
+  </div>
 
-    <button type="submit" class="btn">Save</button>
-    <a href="/" class="btn-cancel">Cancel</a>
+  <!-- <label> <input type="checkbox" name="is_published" /> Publish </label> -->
+  <button type="submit" name="action" value="publish" class="btn">
+    Publish
+  </button>
+  <button type="submit" name="action" value="draft" class="btn">
+    Save to drafts
+  </button>
+
+  <!-- <button type="submit" class="btn">Save to drafts</button> -->
+  <a href="/" class="btn-cancel">Cancel</a>
 </form>
 {% endblock %}

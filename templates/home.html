@@ -27,8 +27,12 @@
 
       <p class="meta">
         {{ post.author }} –
-        {{ post.created_at.strftime('%d.%m.%Y %H:%M') }}
-      </p>
+        {% if post.published_at %}
+          {{ post.published_at.strftime('%d.%m.%Y %H:%M') }}
+        {% else %}
+          {{ post.created_at.strftime('%d.%m.%Y %H:%M') }}
+        {% endif %}
+</p>
 
       <p>
         {{ post.content[:200] }}
