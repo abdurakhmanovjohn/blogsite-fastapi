@@ -13,7 +13,7 @@
 {% if post %}
 <article class="post-full">
     <h2>{{ post.title }}</h2>
-    <p class="meta">{{ post.author }} - {{ post.created_at.strftime('%d.%m.%Y %H:%M') }}</p>
+    <p class="meta">{{ post.author }} - {{ post.published_at.strftime('%d.%m.%Y %H:%M') }}</p>
     <div class="content">
         {{- post.content | trim }}
     </div>
