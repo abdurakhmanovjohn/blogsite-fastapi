@@ -243,6 +243,21 @@ def publish_draft(post_id: int, db: Session = Depends(get_db)):
 
     return RedirectResponse(url=f"/post/{post.slug}", status_code=303)
 
+@app.post("/post/{post_id}/unpublish")
+def unpublish_post(post_id: int, db: Session = Depends(get_db)):
+    post = db.query(models.Post).filter_by(id=post_id).first()
+
+    if not post:
+        raise HTTPException(status_code=404)
+    
+    post.is_published = False
+    post.published_at = None
+    post.updated_at = datetime.now()
+
+    db.commit()
+
+    return RedirectResponse(url="/drafts", status_code=303)
+
 
 @app.get("/api/posts", response_model=List[schemas.PostResponse])
 def get_posts(db: Session = Depends(get_db)):

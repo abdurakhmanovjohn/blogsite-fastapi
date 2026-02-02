@@ -38,6 +38,11 @@ nav h1 a {
   margin-left: 20px !important;
 } */
 
+.btns .btn {
+  display: inline-block;
+  margin-left: 10px;
+}
+
 .btn {
   background: #007bff;
   color: white;
@@ -55,7 +60,8 @@ nav h1 a {
 
 .btn-edit,
 .btn-delete,
-.btn-publish {
+.btn-publish,
+.btn-unpublish {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -124,6 +130,23 @@ nav h1 a {
   background-color: #93c5fd; /* blue-300 */
   border-color: #93c5fd;
   cursor: not-allowed;
+}
+
+.btn-unpublish {
+  color: #374151; /* gray-700 */
+  background-color: #f3f4f6; /* gray-100 */
+
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-left: 5px;
+}
+
+.btn-unpublish:hover {
+  background-color: #e5e7eb;
+  border-color: #9ca3af;
 }
 
 .post-card {
