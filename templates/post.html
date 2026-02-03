@@ -24,6 +24,7 @@
         {{- post.content | trim }}
     </div>
 
+    {% if post.is_published %}
     <div class="post-navigation">
         {% if previous_post %}
             <a href="/post/{{previous_post.slug}}" class="post-nav prev">← Previous</a>
@@ -35,6 +36,7 @@
             <a href="/post/{{next_post.slug}}" class="post-nav next">Next → </a>
         {% endif %}
     </div>
+    {% endif %}
 
     <div class="post-actions">
         {% if is_draft %}
