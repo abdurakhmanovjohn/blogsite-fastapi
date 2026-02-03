@@ -27,22 +27,28 @@
         <form method="post" action="/post/{{ post.id }}/publish" style="display:inline">
           <button class="btn-publish">Publish</button>
         </form>
-        {% endif %}
 
-        <a href="/post/{{post.id}}/edit" class="btn-edit">Edit</a>
-        
+        <form action="/post/{{ post.id }}/delete" method="post" style="display:inline;">
+            <button type="submit" class="btn-delete"
+                onclick="return confirm('Are you sure you want to delete this draft?')">
+                Delete
+            </button>
+        </form>
+
+        {% else %}
+        <form method="post" action="/post/{{ post.id }}/unpublish" style="display:inline">
+          <button class="btn-unpublish">Unpublish</button>
+        </form>
+
         <form action="/post/{{ post.id }}/delete" method="post" style="display:inline;">
             <button type="submit" class="btn-delete"
                 onclick="return confirm('Are you sure you want to delete this post?')">
                 Delete
             </button>
         </form>
-
-        {% if not is_draft %}
-        <form method="post" action="/post/{{ post.id }}/unpublish" style="display:inline">
-          <button class="btn-unpublish">Unpublish</button>
-        </form>
         {% endif %}
+
+        <a href="/post/{{post.id}}/edit" class="btn-edit">Edit</a>
     </div>
     <a href="/" class="btn-back">← Back</a>
 </article>
