@@ -23,6 +23,19 @@
     <div class="content">
         {{- post.content | trim }}
     </div>
+
+    <div class="post-navigation">
+        {% if previous_post %}
+            <a href="/post/{{previous_post.slug}}" class="post-nav prev">← Previous</a>
+        {% endif %}
+
+        <a href="/" class="post-nav more">See More</a>
+        
+        {% if next_post %}
+            <a href="/post/{{next_post.slug}}" class="post-nav next">Next → </a>
+        {% endif %}
+    </div>
+
     <div class="post-actions">
         {% if is_draft %}
         <form method="post" action="/post/{{ post.id }}/publish" style="display:inline">
@@ -51,7 +64,6 @@
 
         <a href="/post/{{post.id}}/edit" class="btn-edit">Edit</a>
     </div>
-    <a href="/" class="btn-back">← Back</a>
 </article>
 {% else %}
 <p>Post Not Found</p>

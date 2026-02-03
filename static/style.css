@@ -363,3 +363,38 @@ nav h1 a {
   margin-bottom: 20px;
   font-weight: 500;
 }
+
+.post-navigation {
+  display: flex;
+  /* justify-content: space-between; */
+  align-items: center;
+  margin: 40px 0;
+  padding: 20px 0;
+  border-top: 1px solid #e5e7eb;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.post-nav {
+  max-width: 45%;
+  font-size: 14px;
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.post-nav:hover {
+  text-decoration: underline;
+}
+
+.post-nav.prev {
+  margin-right: auto;
+}
+
+.post-nav.next {
+  margin-left: auto;
+}
+
+.post-nav.more {
+  margin: 0 auto;
+  font-weight: 500;
+}
