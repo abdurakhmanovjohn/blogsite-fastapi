@@ -38,9 +38,11 @@
             </button>
         </form>
 
+        {% if not is_draft %}
         <form method="post" action="/post/{{ post.id }}/unpublish" style="display:inline">
           <button class="btn-unpublish">Unpublish</button>
         </form>
+        {% endif %}
     </div>
     <a href="/" class="btn-back">← Back</a>
 </article>
