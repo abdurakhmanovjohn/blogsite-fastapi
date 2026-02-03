@@ -99,52 +99,6 @@ def view_post(request: Request, slug: str, db: Session = Depends(get_db)):
     return templates.TemplateResponse("post.html", {"request": request, "post": post, "previous_post": previous_post, "next_post": next_post}, )
 
 
-
-@app.get("/post/{slug}", response_class=HTMLResponse)
-def view_post(request: Request, slug: str, db: Session = Depends(get_db)):
-    post = (
-        db.query(models.Post)
-        .filter(
-            models.Post.slug == slug,
-            models.Post.is_published == True,
-        )
-        .first()
-    )
-
-    if not post:
-        raise HTTPException(status_code=404, detail="Post not found")
-
-    previous_post = (
-        db.query(models.Post)
-        .filter(
-            models.Post.is_published == True,
-            models.Post.published_at < post.published_at,
-        )
-        .order_by(models.Post.published_at.desc())
-        .first()
-    )
-
-    next_post = (
-        db.query(models.Post)
-        .filter(
-            models.Post.is_published == True,
-            models.Post.published_at > post.published_at,
-        )
-        .order_by(models.Post.published_at.asc())
-        .first()
-    )
-
-    return templates.TemplateResponse(
-        "post.html",
-        {
-            "request": request,
-            "post": post,
-            "previous_post": previous_post,
-            "next_post": next_post,
-        },
-    )
-
-
 @app.get("/create", response_class=HTMLResponse)
 def create_page(request: Request):
     return templates.TemplateResponse("create.html", {"request": request})
