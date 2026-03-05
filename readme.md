@@ -28,26 +28,30 @@ blogsite-fastapi/
 ├── requirements.txt     # Python project dependencies
 ├── .gitignore           # Git ignore rules
 └── .DS_Store            # macOS directory attributes
-⚙️ Local Setup and Installation
-Clone the repository:
+## ⚙️ Local Setup and Installation
 
-Bash
-git clone [https://github.com/abdurakhmanovjohn/blogsite-fastapi.git](https://github.com/abdurakhmanovjohn/blogsite-fastapi.git)
-cd blogsite-fastapi
-Create and activate a virtual environment:
+1. **Clone the repository:**
+   ```bash
+   git clone [https://github.com/abdurakhmanovjohn/blogsite-fastapi.git](https://github.com/abdurakhmanovjohn/blogsite-fastapi.git)
+   cd blogsite-fastapi
+   ```
 
-Bash
-python -m venv venv
-# On Windows:
-venv\Scripts\activate
-# On macOS/Linux:
-source venv/bin/activate
-Install dependencies:
+2. **Create and activate a virtual environment:**
+   ```bash
+   python -m venv venv
+   # On Windows:
+   venv\Scripts\activate
+   # On macOS/Linux:
+   source venv/bin/activate
+   ```
 
-Bash
-pip install -r requirements.txt
-Run the development server:
+3. **Install dependencies:**
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-Bash
-uvicorn main:app --reload
-The application will be available at http://127.0.0.1:8000/. You can also access the interactive API documentation at http://127.0.0.1:8000/docs.
+4. **Run the development server:**
+   ```bash
+   uvicorn main:app --reload
+   ```
+   The application will be available at `http://127.0.0.1:8000/`. You can also access the interactive API documentation at `http://127.0.0.1:8000/docs`.
