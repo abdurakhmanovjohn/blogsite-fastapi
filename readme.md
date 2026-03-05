@@ -28,6 +28,7 @@ blogsite-fastapi/
 ├── requirements.txt     # Python project dependencies
 ├── .gitignore           # Git ignore rules
 └── .DS_Store            # macOS directory attributes
+```
 
 ## ⚙️ Local Setup and Installation
 
